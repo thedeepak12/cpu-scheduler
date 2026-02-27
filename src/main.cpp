@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "../include/core/Process.hpp"
+#include "../include/scheduler/FCFS.hpp"
 
 int main() {
     std::cout << "=== CPU Scheduler ===" << std::endl;
@@ -12,10 +13,9 @@ int main() {
     processes.push_back(Process(3, 2, 8));
     processes.push_back(Process(4, 3, 6));
     
-    std::cout << "Created Processes:" << std::endl;
-    for (const auto& p : processes) {
-        p.display();
-    }
+    FCFS scheduler(processes);
+    scheduler.execute();
+    scheduler.displayResults();
         
     return 0;
 }
