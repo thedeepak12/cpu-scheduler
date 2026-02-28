@@ -19,6 +19,7 @@ void FCFS::execute() {
             currentTime = process.getArrivalTime();
         }
 
+        int startTime = currentTime;
         int waitTime = currentTime - process.getArrivalTime();
         process.setWaitingTime(waitTime);
 
@@ -26,6 +27,8 @@ void FCFS::execute() {
                   << " starts executing" << std::endl;
 
         currentTime += process.getBurstTime();
+
+        gantt.addEntry(process.getPid(), startTime, currentTime);
 
         process.setCompletionTime(currentTime);
         int turnaroundTime = currentTime - process.getArrivalTime();
@@ -37,6 +40,8 @@ void FCFS::execute() {
 }
 
 void FCFS::displayResults() {
+    gantt.display();
+
     std::cout << "\n=== Results ===" << std::endl;
     std::cout << "PID\tArrival\tBurst\tCompletion\tWaiting\tTurnaround" << std::endl;
     
