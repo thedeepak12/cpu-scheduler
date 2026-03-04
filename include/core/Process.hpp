@@ -8,6 +8,7 @@ private:
     int pid;
     int arrivalTime;
     int burstTime;
+    int remainingTime;
     int waitingTime;
     int turnaroundTime;
     int completionTime;
@@ -18,10 +19,12 @@ public:
     int getPid() const;
     int getArrivalTime() const;
     int getBurstTime() const;
+    int getRemainingTime() const;
     int getWaitingTime() const;
     int getTurnaroundTime() const;
     int getCompletionTime() const;
     
+    void setRemainingTime(int time);
     void setWaitingTime(int time);
     void setTurnaroundTime(int time);
     void setCompletionTime(int time);
