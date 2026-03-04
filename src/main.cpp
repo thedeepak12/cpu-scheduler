@@ -4,6 +4,7 @@
 #include "../include/scheduler/FCFS.hpp"
 #include "../include/scheduler/SJF.hpp"
 #include "../include/scheduler/RoundRobin.hpp"
+#include "../include/scheduler/Priority.hpp"
 #include "../include/utils/InputHandler.hpp"
 
 int main() {
@@ -36,6 +37,7 @@ int main() {
     std::cout << "1. FCFS (First Come First Serve)" << std::endl;
     std::cout << "2. SJF (Shortest Job First)" << std::endl;
     std::cout << "3. Round Robin" << std::endl;
+    std::cout << "4. Priority Scheduling" << std::endl;
     std::cout << "Choice: ";
     
     int algoChoice;
@@ -55,6 +57,10 @@ int main() {
         std::cin >> quantum;
         
         RoundRobin scheduler(processes, quantum);
+        scheduler.execute();
+        scheduler.displayResults();
+    } else if (algoChoice == 4) {
+        Priority scheduler(processes);
         scheduler.execute();
         scheduler.displayResults();
     } else {
