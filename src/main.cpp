@@ -5,6 +5,7 @@
 #include "../include/scheduler/SJF.hpp"
 #include "../include/scheduler/RoundRobin.hpp"
 #include "../include/scheduler/Priority.hpp"
+#include "../include/scheduler/SRTF.hpp"
 #include "../include/utils/InputHandler.hpp"
 
 int main() {
@@ -38,6 +39,7 @@ int main() {
     std::cout << "2. SJF (Shortest Job First)" << std::endl;
     std::cout << "3. Round Robin" << std::endl;
     std::cout << "4. Priority Scheduling" << std::endl;
+    std::cout << "5. SRTF (Shortest Remaining Time First)" << std::endl;
     std::cout << "Choice: ";
     
     int algoChoice;
@@ -61,6 +63,10 @@ int main() {
         scheduler.displayResults();
     } else if (algoChoice == 4) {
         Priority scheduler(processes);
+        scheduler.execute();
+        scheduler.displayResults();
+    } else if (algoChoice == 5) {
+        SRTF scheduler(processes);
         scheduler.execute();
         scheduler.displayResults();
     } else {
